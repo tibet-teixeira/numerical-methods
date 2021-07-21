@@ -1,9 +1,6 @@
 package tesky.mn2.integration;
 
-import tesky.mn2.function.Cos2;
-import tesky.mn2.function.Function;
-import tesky.mn2.function.Sin;
-import tesky.mn2.function.Sin2;
+import tesky.mn2.function.*;
 
 import java.util.Locale;
 import java.util.Scanner;
@@ -11,7 +8,10 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 //        executeNewtonCotes();
-        executeGaussLegendre();
+//        executeGaussLegendre();
+//        executeGaussHermite();
+//        executeGaussLaguerre();
+        executeGaussChebyshev();
     }
 
     private static void executeNewtonCotes() {
@@ -114,7 +114,6 @@ public class Main {
         double a;
         double b;
         int N;
-        String integrationPhilosophy;
         Function function;
         int functionIndex;
         double tolerance = Math.pow(10, -6);
@@ -174,5 +173,153 @@ public class Main {
             default:
                 System.err.println("Grau inválido!");
         }
+    }
+
+    private static void executeGaussHermite() {
+        int N;
+        Function function;
+        int functionIndex;
+
+        Scanner in = new Scanner(System.in);
+
+        System.out.println("Indique que função você deseja calcular.\n" +
+                "0 - sen(x)\n" +
+                "1 - (sen(2x) + 4x^2 + 3x)^2\n" +
+                "2 - (cos(2x))^2\n" +
+                "3 - 1/(cbrt(x^2))\n" +
+                "4 - 1/(sqrt(4 - x^2))");
+        functionIndex = in.nextInt();
+
+        switch (functionIndex) {
+            case 0:
+                function = new Sin();
+                break;
+            case 1:
+                function = new Sin2();
+                break;
+            case 2:
+                function = new Cos2();
+                break;
+            case 3:
+                function = new Exponential1();
+                break;
+            case 4:
+                function = new Exponential2();
+                break;
+            default:
+                throw new RuntimeException("Função inválida!");
+        }
+
+        System.out.println("Insira a quantidade de pontos (2 a 4):");
+        N = in.nextInt();
+
+        switch (N) {
+            case 2:
+                System.out.println(GaussHermite.gaussHermite2Points(function));
+                break;
+            case 3:
+                System.out.println(GaussHermite.gaussHermite3Points(function));
+                break;
+            case 4:
+                System.out.println(GaussHermite.gaussHermite4Points(function));
+                break;
+            default:
+                System.err.println("Grau inválido!");
+        }
+    }
+
+    private static void executeGaussLaguerre() {
+        int N;
+        Function function;
+        int functionIndex;
+
+        Scanner in = new Scanner(System.in);
+
+        System.out.println("Indique que função você deseja calcular.\n" +
+                "0 - sen(x)\n" +
+                "1 - (sen(2x) + 4x^2 + 3x)^2\n" +
+                "2 - (cos(2x))^2\n" +
+                "3 - 1/(cbrt(x^2))\n" +
+                "4 - 1/(sqrt(4 - x^2))");
+        functionIndex = in.nextInt();
+
+        switch (functionIndex) {
+            case 0:
+                function = new Sin();
+                break;
+            case 1:
+                function = new Sin2();
+                break;
+            case 2:
+                function = new Cos2();
+                break;
+            case 3:
+                function = new Exponential1();
+                break;
+            case 4:
+                function = new Exponential2();
+                break;
+            default:
+                throw new RuntimeException("Função inválida!");
+        }
+
+        System.out.println("Insira a quantidade de pontos (2 a 4):");
+        N = in.nextInt();
+
+        switch (N) {
+            case 2:
+                System.out.println(GaussLaguerre.gaussLaguerre2Points(function));
+                break;
+            case 3:
+                System.out.println(GaussLaguerre.gaussLaguerre3Points(function));
+                break;
+            case 4:
+                System.out.println(GaussLaguerre.gaussLaguerre4Points(function));
+                break;
+            default:
+                System.err.println("Grau inválido!");
+        }
+    }
+
+    private static void executeGaussChebyshev() {
+        int N;
+        Function function;
+        int functionIndex;
+
+        Scanner in = new Scanner(System.in);
+
+        System.out.println("Indique que função você deseja calcular.\n" +
+                "0 - sen(x)\n" +
+                "1 - (sen(2x) + 4x^2 + 3x)^2\n" +
+                "2 - (cos(2x))^2\n" +
+                "3 - 1/(cbrt(x^2))\n" +
+                "4 - 1/(sqrt(4 - x^2))");
+        functionIndex = in.nextInt();
+
+        switch (functionIndex) {
+            case 0:
+                function = new Sin();
+                break;
+            case 1:
+                function = new Sin2();
+                break;
+            case 2:
+                function = new Cos2();
+                break;
+            case 3:
+                function = new Exponential1();
+                break;
+            case 4:
+                function = new Exponential2();
+                break;
+            default:
+                throw new RuntimeException("Função inválida!");
+        }
+
+        System.out.println("Insira a quantidade de pontos que deseja calcular: ");
+        N = in.nextInt();
+        if (N < 1) throw new RuntimeException("A quantidade de pontos deve ser positiva");
+
+        System.out.println(GaussChebyshev.gaussChebyshevNPoints(function, N));
     }
 }
