@@ -42,6 +42,18 @@ public class Vector {
         return Math.sqrt(normValue);
     }
 
+    public Double get(int i) {
+        return vector.get(i);
+    }
+
+    public Double set(int i, Double value) {
+        return vector.set(i, value);
+    }
+
+    public int size() {
+        return vector.size();
+    }
+
     public Vector normalize() {
         Vector normalizedVector = new Vector();
         Double norm = normCalculate();
@@ -65,6 +77,12 @@ public class Vector {
         }
 
         return product;
+    }
+
+    public static void swap(Vector vector, int i, int j) {
+        Double aux = vector.get(i);
+        vector.set(i, vector.get(j));
+        vector.set(j, aux);
     }
 
     @Override

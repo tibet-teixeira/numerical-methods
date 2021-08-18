@@ -51,6 +51,26 @@ public class UtilTest {
         assertEquals(Double.valueOf(0.8017837257372732), normalizedVector.vector.get(2));
     }
 
+    @Test
+    public void shouldSwapValuesInVector() {
+        Vector vector = generateVector();
+        Vector.swap(vector, 0, 1);
+
+        assertEquals(Double.valueOf(2.0), vector.get(0));
+        assertEquals(Double.valueOf(1.0), vector.get(1));
+        assertEquals(Double.valueOf(3.0), vector.get(2));
+    }
+
+    @Test
+    public void shouldSwapValuesInMatrix() {
+        Matrix matrix = generateMatrix();
+        Matrix.swap(matrix, 0, 0, 2, 2);
+
+        assertEquals(Double.valueOf(2.0), matrix.get(0, 0));
+        assertEquals(Double.valueOf(3.0), matrix.get(1, 1));
+        assertEquals(Double.valueOf(5.0), matrix.get(2, 2));
+    }
+
     private Matrix generateMatrix() {
         return new Matrix(new Vector(5.0, 2.0, 1.0),
                 new Vector(2.0, 3.0, 1.0),
