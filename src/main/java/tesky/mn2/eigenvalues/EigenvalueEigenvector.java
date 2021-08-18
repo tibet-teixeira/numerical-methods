@@ -7,6 +7,11 @@ public class EigenvalueEigenvector implements Result {
     public Double eigenvalue;
     public Vector eigenvector;
 
+    public EigenvalueEigenvector(Double eigenvalue, Vector eigenvector) {
+        this.eigenvalue = eigenvalue;
+        this.eigenvector = eigenvector;
+    }
+
     @Override
     public void setEigenvalueEigenvector(Double eigenvalue, Vector eigenvector) {
         this.eigenvalue = eigenvalue;
