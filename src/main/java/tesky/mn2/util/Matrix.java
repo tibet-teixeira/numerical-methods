@@ -48,8 +48,8 @@ public class Matrix {
         return matrix.get(i).get(j);
     }
 
-    public Double set(int i, int j, Double value) {
-        return matrix.get(i).set(j, value);
+    public void set(int i, int j, Double value) {
+        matrix.get(i).set(j, value);
     }
 
     public int size() {
