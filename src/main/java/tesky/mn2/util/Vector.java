@@ -85,6 +85,25 @@ public class Vector {
         vector.set(j, aux);
     }
 
+    public Vector scalarMultiplication(double scalar) {
+        Vector scalarVector = new Vector(this);
+        for (int element = 0; element < this.size(); element++) {
+            scalarVector.set(element, this.get(element) * scalar);
+        }
+        return scalarVector;
+    }
+
+    public Vector vectorSubtraction(Vector anotherVector) {
+        int size = this.size();
+        Vector subVector = new Vector(size);
+
+        for (int element = 0; element < size; element++) {
+            subVector.set(element, this.get(element) - anotherVector.get(element));
+        }
+
+        return subVector;
+    }
+
     @Override
     public String toString() {
         return this.vector.toString();

@@ -1,8 +1,11 @@
 package tesky.mn2.util;
 
-public interface Result {
+import java.util.List;
 
-    void setEigenvalueEigenvector(Double eigenvalue, Vector eigenvector);
+public interface Result {
     Double getEigenvalue();
     Vector getEigenvector();
+    List<Matrix> getHouseholderResult();
+    Matrix getQRResultMatrix();
+    Vector getQRResultLambdasVector();
 }

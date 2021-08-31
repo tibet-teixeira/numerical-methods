@@ -88,6 +88,69 @@ public class Matrix {
         return identityMatrix;
     }
 
+    public Matrix matrixSubtraction(Matrix anotherMatrix) {
+        int size = this.size();
+        Matrix subMatrix = new Matrix(size);
+
+        for (int row = 0; row < size; row++) {
+            for (int col = 0; col < size; col++) {
+                subMatrix.set(row, col, this.get(row, col) - anotherMatrix.get(row, col));
+            }
+        }
+
+        return subMatrix;
+    }
+
+    public Matrix transpose() {
+        Matrix transposeMatrix = new Matrix(this.size());
+
+        for (int row = 0; row < this.size(); row++) {
+            for (int col = 0; col < this.size(); col++) {
+                transposeMatrix.set(col, row, this.get(row, col));
+            }
+        }
+        return transposeMatrix;
+    }
+
+    public Matrix scalarMultiplication(double scalar) {
+        Matrix scalarMatrix = new Matrix(this);
+        Vector scalarVector;
+        for (int row = 0; row < this.size(); row++) {
+            scalarVector = this.matrix.get(row).scalarMultiplication(scalar);
+            for (int col = 0; col < this.size(); col++) {
+                scalarMatrix.set(row, col, scalarVector.get(col));
+            }
+        }
+        return scalarMatrix;
+    }
+
+    public Matrix matrixMultiplication(Matrix anotherMatrix) {
+        Matrix matrixMult = new Matrix(this.size());
+        int size = this.size();
+        double result;
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                matrixMult.set(i, j, 0.);
+                for (int k = 0; k < size; k++) {
+                    result = matrixMult.get(i, j) + this.get(i, k) * anotherMatrix.get(k, j);
+                    matrixMult.set(i, j, result);
+                }
+            }
+        }
+
+        return matrixMult;
+    }
+
+    public double sumSquareBelowDiagonal() {
+        int size = this.size();
+        double sum = 0;
+        // TODO rever este calculo
+        for (int col = 0; col < size - 1; col++) {
+            sum += Math.pow(this.get(col + 1, col), 2);
+        }
+        return sum;
+    }
+
     @Override
     public String toString() {
         return matrix.toString().replace("],", "]\n");
