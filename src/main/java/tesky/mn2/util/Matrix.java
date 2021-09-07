@@ -7,6 +7,10 @@ import java.util.List;
 public class Matrix {
     public List<Vector> matrix;
 
+    public Matrix() {
+        matrix = new ArrayList<>();
+    }
+
     public Matrix(int n) {
         matrix = new ArrayList<>();
         for (int i = 0; i < n; i++) {
@@ -50,6 +54,10 @@ public class Matrix {
 
     public void set(int i, int j, Double value) {
         matrix.get(i).set(j, value);
+    }
+
+    public void add(Vector vector) {
+        this.matrix.add(vector);
     }
 
     public int size() {
@@ -144,7 +152,6 @@ public class Matrix {
     public double sumSquareBelowDiagonal() {
         int size = this.size();
         double sum = 0;
-        // TODO rever este calculo
         for (int col = 0; col < size - 1; col++) {
             sum += Math.pow(this.get(col + 1, col), 2);
         }

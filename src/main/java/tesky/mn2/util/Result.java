@@ -8,4 +8,5 @@ public interface Result {
     List<Matrix> getHouseholderResult();
     Matrix getQRResultMatrix();
     Vector getQRResultLambdasVector();
+    List<Vector> getVectorsByBoundaryValueProblem();
 }

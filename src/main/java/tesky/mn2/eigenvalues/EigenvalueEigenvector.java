@@ -54,4 +54,9 @@ public class EigenvalueEigenvector implements Result {
     public Vector getQRResultLambdasVector() {
         return lambdas;
     }
+
+    @Override
+    public List<Vector> getVectorsByBoundaryValueProblem() {
+        return null;
+    }
 }

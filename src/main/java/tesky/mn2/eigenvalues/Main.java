@@ -92,7 +92,7 @@ public class Main {
 
     public static void executeExercise12() {
         System.out.println("Matriz A1");
-        Result resultA1 = Eigenvalue.QRMethod(A1, TOLERANCE, true);
+        Result resultA1 = Eigenvalue.QRMethod(A1, TOLERANCE);
 
         Vector lambdas = resultA1.getQRResultLambdasVector();
         Matrix matrixP = resultA1.getQRResultMatrix().transpose(); // calcula a transposta apenas para facilitar a visualização por vetores

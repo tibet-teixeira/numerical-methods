@@ -1,10 +1,10 @@
-package tesky.mn2.derivate;
+package tesky.mn2.derivative;
 
 import tesky.mn2.function.Function;
 
-public class DerivateMethods {
+public class DerivativeMethods {
 
-    public static double taylorSeriesDerivateSecond(Function function, double x) {
+    public static double taylorSeriesDerivativeSecond(Function function, double x) {
         double delta = Math.pow(10, -4);
         double c1 = -1 / 12.;
         double c2 = 4 / 3.;
@@ -21,7 +21,7 @@ public class DerivateMethods {
                 + error;
     }
 
-    public static double newtonPolynomialDerivateSecond(Function function, double x) {
+    public static double newtonPolynomialDerivativeSecond(Function function, double x) {
         double delta = Math.pow(10, -4);
         return 1 / Math.pow(delta, 2) * (function.f(x - delta) - 2 * function.f(x) + function.f(x + delta));
     }

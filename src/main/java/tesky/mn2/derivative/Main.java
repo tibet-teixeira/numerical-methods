@@ -1,4 +1,4 @@
-package tesky.mn2.derivate;
+package tesky.mn2.derivative;
 
 import tesky.mn2.function.*;
 
@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        int derivateMethod;
+        int derivativeMethod;
         Function function;
         int functionIndex;
         double x;
@@ -54,14 +54,14 @@ public class Main {
         System.out.println("Indique o método que deseja calcular.\n" +
                 "0 - Série de Taylor\n" +
                 "1 - Polinômio de Newton");
-        derivateMethod = in.nextInt();
+        derivativeMethod = in.nextInt();
 
-        switch (derivateMethod) {
+        switch (derivativeMethod) {
             case 0:
-                System.out.println(DerivateMethods.taylorSeriesDerivateSecond(function, x));
+                System.out.println(DerivativeMethods.taylorSeriesDerivativeSecond(function, x));
                 break;
             case 1:
-                System.out.println(DerivateMethods.newtonPolynomialDerivateSecond(function, x));
+                System.out.println(DerivativeMethods.newtonPolynomialDerivativeSecond(function, x));
                 break;
             default:
                 System.err.println("Grau inválido!");
